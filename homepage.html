@@ -4,33 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TeamA homepage</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <img src="assets/images/group logo.png" alt="grouplogo" width="50" height="50">
-        <input type="text" placeholder="">
-        <button>Search</button>
-        <button>Log In</button>
-        <button>Sign Up</button>
+
+    <header class="mb-5">
+        <nav class="navbar bg-light shadow-sm ">
+            <div class="container">
+                <a href="homepage.html" class="navbar-brand fw-bold text-purple fs-3">Team A</a>
+                <form class="d-flex mx-auto w-50">
+                    <input class="form-control" type="search" placeholder="Search for items..">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </form>
+
+                <div>
+                    <button class="btn btn-outline-purple">Log In</button>
+                    <button class="btn btn-purple">Sign Up</button>
+                </div>
+                
+                
+            </div>
+        </nav>
     </header>
-    <main>
-        <section>
-            <img src="assets/images/top.jpg" alt="top">
-            <p>Tops</p>
-        </section>
-        <section>
-            <img src="assets/images/pants.jpg" alt="pants">
-            <p>Pants</p>
-        </section>
-        <section>
-            <img src="assets/images/shoes.jpg" alt="shoes">
-            <p>Shoes</p>
-        </section>
-        <section>
-            <img src="assets/images/bag.jpg" alt="bags">
-            <p>Bags</p>
-        </section>
+
+    <section class="position-relative mb-5 vh-50">
+        <img src="assets/images/donation imaginary.webp" alt="Donate and Pick What You Need" class="img-fluid w-100 h-100 object-fit-cover">
+        <div class="position-absolute top-50 start-50 translate-middle text-center text-purple">
+            <h1 class="fw-bold">Donate and Pick What You Need</h1>
+            <p>Help others by donating items and find what you need.</p>
+            <a href="#" class="btn btn-purple">Donate Now</a>
+        </div>
+    </section>
+
+       <main class="container ">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <a href="#">
+                    <div class="card text-center w-50">
+                        <img src="assets/images/top.jpg" alt="Tops" class="card-img">
+                        <p>Tops</p>
+                    </div>
+                </a>  
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="#">
+                    <div class="card text-center w-50">
+                        <img src="assets/images/pants.jpg" alt="Pants" class="card-img">
+                        <p>Pants</p>
+                    </div>
+                </a>  
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="#">
+                    <div class="card text-center w-50">
+                        <img src="assets/images/shoes.jpg" alt="Shoes" class="card-img">
+                        <p>Shoes</p>
+                    </div>
+                </a>  
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <a href="#">
+                    <div class="card text-center w-50">
+                        <img src="assets/images/bag.jpg" alt="bags" class="card-img">
+                        <p>Bags</p>
+                    </div>
+                </a>  
+            </div>
+        </div>
+            
     </main>
+
+    
     
 </body>
 </html>
