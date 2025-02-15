@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Admin Profile Page</title>
+        <link rel = "stylesheet" href="css styles/bootstrap.css">
+    </head>
+
+    <body>
+        <header>
+            <!--TITLE ON THE WEBSITE-->
+            <h1>GROUP A WEBSITE</h1>
+
+
+            <!--INSERT NAVIGATION WINDOW-->
+            <nav>
+                <div class="d-flex justify-content-between align-items-center">
+
+                <!--INSERT THE IMAGE OF THE PERSON-->
+                <h4 ><img src = "images/login logo.jpg"  style = "width:100px; height:100px;" alt = "Image of user">Hi Admin,</h4>
+
+                    <!--MOVING SUPPORT AND SETTINGS TO RIGHT SIDE OF NAVIGATION PLANE-->
+                    <div class="nav justify-content-end">
+                    <div class="ml-3"><a href = "#"><img src = "images/help icon.png" class="rounded-circle" style="width: 24px; height: 24px;" alt = "support icon">Support</a></div>
+                    <div class="ml-3"><a href = "#"><img src = "images/settings icon.png" class="rounded-circle" style="width: 24px; height: 24px;" alt = "settings icon">Setting</a></div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <!--ITEMS-->
+            <img src = "images/cart icon.png" class="rounded-circle, w-20,d-inline-block" style="width: 50px; height: 50px;" alt = "cart icon">
+            <h2 class="d-inline-block">Uploaded Items</h2>
+
+<img src = "images/nothing.jpg" alt = "item image" id = "item_image">
+<p id = "item_title"></p>
+<p id = "item_descrp"></p>
+
+<script>
+   //retrieve items from index.html and save in a variable
+            var itemDetails = JSON.parse(localStorage.getItem("itemDetails"));
+
+   if (itemDetails){
+   //assign retrieve items to their id new html file
+   document.getElementById("item_image").src = itemDetails.item_image;
+  
+   document.getElementById("item_title").textContent = itemDetails.itemTitle;
+
+  document.getElementById("item_descrp").textContent = itemDetails.item_description;
+}
+</script>
+        </main>
+
+        <footer>
+            <div class="d-flex justify-content-between align-items-center">
+                <div><a href="#">Browse</a></div>
+                <div><a href = "#"><input type = "text" id = "search_item" value = "">Search</a></div>
+                <div><a href = "#"><img src = "images/login logo.jpg" class="rounded-circle, w-20" style="width: 32px; height: 32px;" alt = "signin icon">Sign In</a></div>
+                <div><a href = "upload2.html"><img src = "images/cart icon.png" class="rounded-circle, w-20" style="width: 24px; height: 24px;" alt = "cart icon">Upload</a></div>
+            </div>
+        </footer>
+    </body>
+</html>
