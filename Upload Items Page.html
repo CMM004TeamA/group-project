@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD STARTS HERE -->
+<head>
+    <title>Upload Items</title>
+    <link link rel="stylesheet" href="CSS ItemUploadPage.css"/>
+</head>
+<!-- BODY STARTS HERE -->
+ <body>
+<!-- HEADER -->
+ <header><h1>Upload Items</h1></header>
+ <!-- MAIN -->
+  <br>
+  <main>
+    <p> Please use the form below to upload any item you would like to display on this website. Please ensure you write sufficent amount of detail to ensure those reserving the item know all important details.</p>
+  </main>
+  <br>
+  <br>
+  <!-- FORM -->
+   <div class="form">
+    <div class="column">
+      <form action="/submit" method="post" enctype="multipart/form-data"> <!-- Code taken from Copilot to upload image -->
+      <label for="ItemName">Title:</label><br>
+      <input type="text" name="ItemName" value="e.g. Black Nike Hoodie">
+      <br><br>
+      <label for="UploadDate">Date Item Uploaded:</label><br>
+      <input type="date" name="UploadDate" value="">
+      <br><br>
+      <label for="gender">Item Gender:</label><br>
+      <div class="radio-group">
+        <label for="mens"><input type="radio" id="male" name="gender" value="mens" class="radio-button">Mens Clothing</label>
+        <label for="womens"><input type="radio" id="womens" name="gender" value="womens" class="radio-button">Womens Clothing</label>
+        <label for="unisex"><input type="radio" id="unisex" name="gender" value="unisex" class="radio-button">Unisex</label>
+      </div>
+      <br><br>
+      <label for="ItemCategory">Item Category</label><br>
+      <select name="ItemCategory">
+        <div class="select-options">
+          <option value="">Select Item Category</option>
+          <option value="hat">Hat</option>
+          <option value="coat">Coat</option>
+          <option value="scarf">Scarf</option>
+          <option value="tshirt">T-Shirt</option>
+          <option value="longsleeve">Long Sleeve Top</option>
+          <option value="hoodie">Hoodie</option>
+          <option value="jumper">Jumper</option>
+          <option value="dress">Dress</option>
+          <option value="shoes">Shoes</option>
+        </div>
+      </select>
+    </div>
+    <div class="column">
+      <label for="description">Description:</label><br>
+      <textarea id="description" name="description" rows="20" cols="50"></textarea>
+      <br><br>
+      <label for="image">Choose an image to upload:</label> <!-- Code taken from Copilot to upload image -->
+      <input type="file" id="image" name="image" accept="image/*"> <!-- Code taken from Copilot to upload image -->
+      <br><br>
+      <input type="submit" value="Submit Form">
+      </form>
+    </div>
+ </body>
+</html>

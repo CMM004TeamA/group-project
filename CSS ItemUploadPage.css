@@ -1,0 +1,49 @@
+.column {
+    flex: 1;
+    margin: 10px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: blanchedalmond;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+.radio-group {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.select-options {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+.radio-button {
+    width: 15px;
+    height: 15px;
+    align-items: center;
+}
+
+input {
+    width: 50%
+}
+
+select {
+    width: 50%;
+}
+
+.submit-button {
+    align-items: center;
+}
+
+/* Text CSS */
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
