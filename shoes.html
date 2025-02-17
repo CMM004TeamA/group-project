@@ -15,8 +15,8 @@
             <div class="container">
                 <a href="homepage.html" class="navbar-brand fw-bold text-purple fs-3">Team A</a>
                 <form class="d-flex mx-auto w-50">
-                    <input class="form-control" type="search" placeholder="Search for items..">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    <input class="form-control" type="search" placeholder="Search for items.." id="searchInput">
+                    <button class="btn btn-outline-secondary" type="button" onclick="searchItems()">Search</button>
                 </form>
 
                 <div>
@@ -31,7 +31,7 @@
 
     <main class="container ">
         <h2 class="text-center text-purple mb-4">Shoes</h2>
-        <div class="row g-4">
+        <div class="row g-4" id="itemContainer">
             <div class="col-md-4 col-lg-3">
                 <div class="card text-center">
                     <img src="assets/images/shoe1.jpg" alt="Black toe thong mid block heel sandals" class="card-img">
@@ -78,6 +78,7 @@
         </div>
 
     </main>
+    <script src="assets/js/search.js"></script>
 </body>
 
 </html>
