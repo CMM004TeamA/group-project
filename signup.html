@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Register User</title>
+<link rel = "stylesheet" href = "bootstrap.css">
+<meta charset = "utf-8">
+<meta name = "viewport" content = "width=device-width, initial-scale">
+</head>
+
+
+<body>
+</head>
+<body> 
+    <header>
+<!--Navigation Bar-->
+<nav class = "navbar">
+<button id="homeBtn">Home</button>
+<button id="cartBtn">Cart</button>
+<button id="supportBtn">Support</button>
+<button id="logoutBtn">Logout</button>
+</nav>
+</header>
+
+
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-md-4">
+
+    <h3 class="text-center mb-4">Sign Up</h3>
+   
+        <form id = "cvform" style="width:50%;margin:0 auto;" action = "#" method = "post">
+            <div class = "mb-3">
+            <label for = "name">Full Name:</label><br>
+            <input type = "text" name = "full_name" placeholder = "Full Name" class = "form-control" maxlength="10" required = ""><br>
+            </div>
+
+            <div class = "mb-3">
+            <label for = "email">Email:</label><br>
+            <input type = "email" name = "email" placeholder = "Email" class = "form-control" maxlength="1" required = ""><br>
+            </div>
+
+            <div class = "mb-3">
+            <label for = "password">Password:</label><br>
+            <input type = "password" name = "password" placeholder = "Password" class = "form-control" maxlength="10" required = ""><br>
+            </div>
+
+            <div class = "mb-3">
+            <label for = "repeat_password">Repeat Password:</label><br>
+            <input type = "password" name = "repeat_password" placeholder = "Password" class = "form-control" maxlength="10" required = ""><br>
+            </div>
+
+            <div class = "d-grid">
+            <input type = "submit" value = "Sign Up">
+        </div>
+
+</form>
+
+
+<p class="text-center">Already a User? <a href = "login.html">&nbsp Login</a></p>
+
+</div>
+</div>
+
+
+</body>
+
+</html>
