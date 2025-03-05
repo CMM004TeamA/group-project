@@ -17,7 +17,7 @@
         <p class="text-muted">Please use the form below to upload any item you would like to display on this website. Please ensure you write a sufficient amount of detail to ensure those reserving the item know all important details.</p>
     </main>
     <div class="container bg-light p-4 shadow rounded">
-        <form action="db_connect.php" method="post" enctype="multipart/form-data">
+        <form action="upload_submit.php" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="ItemName" class="form-label">Title:</label>
                 <input type="text" class="form-control" name="ItemName" placeholder="e.g. Black Nike Hoodie">
@@ -49,10 +49,16 @@
             </div>
             <div class="mb-3">
                 <label for="condition" class="form-label">Item Condition:</label>
-                <select class="form-select" name="condition">
+                <select class="form-select" name="condition" required>
                     <option value="">Select Condition</option>
-                    <option value="new">New</option>
-                    <option value="used">Used</option>
+                    <!-- <option value="new">New</option>
+                    <option value="used">Used</option> -->
+                    <!-- Loop through the conditions to populate the dropdown -->
+                    <?php foreach ($conditions as $condition): ?>
+                    <option value="<?= htmlspecialchars($condition['condition_name']) ?>">
+                        <?= htmlspecialchars($condition['condition_name']) ?>
+                    </option>
+                <?php endforeach; ?>
                 </select>
             </div>
             <div class="mb-3">
