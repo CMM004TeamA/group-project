@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Register User</title>
+<link rel = "stylesheet" href = "assets/css/bootstrap.css">
+<link rel = "stylesheet" href = "assets/css/aya_style.css">
+<meta charset = "utf-8">
+<meta name = "viewport" content = "width=device-width, initial-scale">
+</head>
+
+
+<body>
+    <header class = "body_header">
+        
+        <!--INSERT NAVIGATION BAR-->
+        
+        </header>
+
+    <h3 class="text-center">Sign Up</h3>
+   
+        <form id = "cvform" class = "container-sm" style="width:50%;margin:0 auto" action = "http://csdm-webdev.rgu.ac.uk/2405613/DONATION WEBSITE/signup/check_registration.php" method = "POST">
+            <label for = "name">User Name:</label><br>
+            <input type = "text" name = "username" placeholder = "User Name" class = "form-control" maxlength="50" required = ""><br>
+
+            <label for = "email">Email:</label><br>
+            <input type = "email" name = "email" placeholder = "Email" class = "form-control" maxlength="50" required = ""><br>
+
+            <label for = "password">Password:</label><br>
+            <input type = "password" name = "password" placeholder = "Password" class = "form-control" maxlength="50" required = ""><br>
+
+            <label for = "repeat_password">Repeat Password:</label><br>
+            <input type = "password" name = "repeat_password" placeholder = "Password" class = "form-control" maxlength="50" required = ""><br>
+
+            <input type = "submit" name = "submit" value = "Sign Up">
+
+</form>
+
+<p class="text-center">Already a User? <a href = "login_form.html">&nbsp Login</a></p>
+
+
+
+</body>
+
+</html>

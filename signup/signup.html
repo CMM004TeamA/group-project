@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Register User</title>
+<link rel = "stylesheet" href = "assets/css/bootstrap.css">
+<meta charset = "utf-8">
+<meta name = "viewport" content = "width=device-width, initial-scale">
+</head>
+
+
+<body>
+</head>
+<body> 
+    <header>
+<!--Navigation Bar-->
+<nav class = "navbar">
+<button id="homeBtn">Home</button>
+<button id="cartBtn">Cart</button>
+<button id="supportBtn">Support</button>
+<button id="logoutBtn">Logout</button>
+</nav>
+</header>
+
+
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-md-4">
+
+    <h3 class="text-center mb-4">Sign Up</h3>
+   
+    <form id = "cvform" class = "container-sm" style="width:50%;margin:0 auto" action = "http://csdm-webdev.rgu.ac.uk/2405613/DONATION WEBSITE/signup/check_registration.php" method = "POST">
+        <label for = "name">User Name:</label><br>
+        <input type = "text" name = "username" placeholder = "User Name" class = "form-control" maxlength="50" required = ""><br>
+
+        <label for = "email">Email:</label><br>
+        <input type = "email" name = "email" placeholder = "Email" class = "form-control" maxlength="50" required = ""><br>
+
+        <label for = "password">Password:</label><br>
+        <input type = "password" name = "password" placeholder = "Password" class = "form-control" maxlength="50" required = ""><br>
+
+        <label for = "repeat_password">Repeat Password:</label><br>
+        <input type = "password" name = "repeat_password" placeholder = "Password" class = "form-control" maxlength="50" required = ""><br>
+
+        <label for = "role">Role:</label>
+        <select id = "role" name = "role">
+            <option value = "admin">Admin</option>
+            <option value = "user">User</option>
+        </select>
+
+        <input type = "submit" name = "submit" value = "Sign Up">
+
+</form>
+
+
+<p class="text-center">Already a User? <a href = "login.html">&nbsp Login</a></p>
+
+</div>
+</div>
+
+
+</body>
+
+</html>
