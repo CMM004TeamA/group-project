@@ -1,0 +1,17 @@
+.body_main {
+    background-color: white;
+}
+
+.body_reg {
+    background-image: url('../images/registration_background.jpeg');
+}
+
+.body_header {
+    /*background-image: url('../images/pink_background.jpg');*/
+    background-image: url('../images/pink_background2.jfif');
+}
+
+.form_sizing {
+    width: 250px;
+    margin:0 auto;
+}

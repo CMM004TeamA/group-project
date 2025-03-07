@@ -1,0 +1,136 @@
+/*@import "templatecolours.css";*/
+
+body{
+    max-width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:rgba(161, 142, 18, 0.918);
+}
+header{
+    max-width:960px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#36382b;
+}
+
+main{
+    max-width:960px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:rgba(102, 99, 83, 0.918);
+}
+nav>ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+nav>ul>li{
+    float:left;
+}
+nav>ul>li a{
+    display:block;
+    color: #000000;
+    text-align:center;
+    padding:10px 30px;
+    text-decoration: none;
+}
+li a:hover{color: #363636;}
+#csdmlogo{width:300px;}
+#banner{width:960px;
+height:300px;}
+
+#hos{
+    width:200px;
+    float:left;
+    padding-right:10px;
+}
+
+h1{
+    font-family:'Roberto', sans-serif;
+    font-weight:300;
+    padding:10px;
+    color:white;
+}
+p, h2, h3, h4, h5, a{
+    font-family:'Roberto', sans-serif;
+    font-weight:400;
+    padding:10px;
+}
+h3, h4, h5{
+    font-family:'Roberto', sans-serif;
+    font-weight:700;
+}
+#news{
+    background-color:#DBC9DF
+}
+#events{
+    background-color:#782A7E
+}
+
+aside p,h3,h4{
+    background-color:#782A7E;
+    color:white;
+}
+aside p,h3,h4{
+    margin:0;
+}
+aside h4{
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
+}
+aside p{
+    padding-top:20px;
+    padding-left:10px;
+    padding-right:0px;
+}
+
+aside {
+    padding-right:0px !important;
+    padding-top:-5px !important;
+}
+
+h1{font-size:50px;}
+h2{font-size:18px;}
+h3{font-size:16px;}
+h4{font-size:14px;}
+p{font-size:13px;}
+a{font-size:13px;}
+
+footer{
+    max-width:960px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#36382b;
+  
+}
+
+footer>p{
+    width:150px;
+    margin-left:auto;
+    margin-right:auto;
+    color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
