@@ -89,25 +89,25 @@ try {
     }
 
     //Specify upload directory
-    $uploadDir = 'uploads/';
+    $uploadDir = 'uploads/'; 
     if (!is_dir(filename: $uploadDir)){
-        mkdir(directory: $uploadDir, permissions: 0777, recursive: true);
+        mkdir(directory: $uploadDir, permissions: 0777, recursive: true); //creates an upload directory if it doesn't exist.
     }
 
     if(!is_writable(filename: $uploadDir)){
         throw new Exception('Upload directory is not writable.');
     }
 
-    //Generate unique filename
+    //Generate unique filename 
     $fileName = basename(path: $_FILES['image']['name']);
-    $filePath = $uploadDir . uniqid() . '_' . $fileName;
+    $filePath = $uploadDir . uniqid() . '_' . $fileName; //so it doesn't mix up with other files
 
-    //Move file to upload directory
+    //Move file to upload directory 
     if(!move_uploaded_file(from: $_FILES['image']['tmp_name'], to: $filePath)){
         throw new Exception('Failed to save image.');
     }
 
-    //Insert into itemimages table
+    //Insert into itemimages table in the database
     $imageresult = $conn->prepare('INSERT INTO itemimages (item_id, image_path) VALUES (:item_id, :image_path)');
     $imageresult->execute(['item_id' => $item_id, 'image_path' => $filePath]);
 

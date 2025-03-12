@@ -32,12 +32,34 @@ try{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Items</title>
-    <link rel="stylesheet" href="CSS/Upload_items.css">
     <link rel="stylesheet" href="CSS/bootstrap.css">
-    <script src="bootstrap.bundle.js"></script>
+
+    <style>
+        .navbar-brand {
+            color: purple;
+        }
+        .btn-purple {
+            background-color: purple;
+            color: white;
+        }
+
+        .form-select {
+            width: 100%;
+            border-color: purple;
+        }
+        .custom-border {
+            border-color: purple !important; /* Purple border */
+}
+
+        main h2{
+            text-align: center;
+            color : purple;
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -49,22 +71,21 @@ try{
             </div>
         </nav>
 </header>
-
-    <header class="bg-purple text-white text-center py-3">
-        <h2>Upload Items</h2>
-    </header>
+      
     <main class="container mt-4">
-        <p class="text-muted">Please use the form below to upload any items you would like to display on this website.
-            Please ensure you write a sufficient amount of detail to ensure those reserving the item, know all the important details.</p>
+    <h2>Upload Items</h2>
+        <b class="text-muted">Please use the form below to upload any items you would like to display on this website.
+            Please ensure you write a sufficient amount of detail to ensure those reserving the item, know all the important details.</b>
     </main>
     <div class="container bg-light p-4 shadow rounded">
         <form action="upload_items.php" method="post" enctype ="multipart/form-data">
             <div class="mb-3">
                 <label for="ItemName" class="form-label">Title:</label>
-                <input type="text" class="form-control"  name="ItemName" required>
+                <input type="text" class="form-control custom-border"  name="ItemName" required>
             </div>
 
-            <?php function renderDropdown($id, $label, $default, $data=[], $valueField = 'category_id', $labelField = 'category_name', $required = true) { ?>
+            <!-- This code is from a youtube tutorial  -->
+             <?php function renderDropdown($id, $label, $default, $data=[], $valueField = 'category_id', $labelField = 'category_name', $required = true) { ?> 
                 <div class="mb-3">
                 <label class="form-label"><?=htmlspecialchars($label)?></label>
                 <select class="form-select" id="<?=htmlspecialchars(string: $id)?>" name="<?=htmlspecialchars($id)?>" <?= $required ? 'required' : '' ?>>
@@ -81,7 +102,7 @@ try{
             $grandparentCategories = array_filter($categories, function($cat): bool{
                 return $cat['parent_category_id'] === null;
             }); 
-            renderDropdown(id: 'grandparent_category', label: 'Grandparent Category', default: 'Select Grandparent Category', data: $grandparentCategories);
+            renderDropdown(id: 'grandparent_category', label: 'Grandparent Category', default: 'Select Grandparent Category', data: $grandparentCategories); //this code is from a youtube tutorial
             renderDropdown(id: 'parent_category', label: 'Parent Category', default: 'Select Parent Category', data: []);
             renderDropdown(id: 'child_category', label: 'Child Category', default: 'Select Child Category', data: []);
             renderDropdown(id: 'size', label: 'Size', default: 'Select Size (Optional)', data: $sizes, valueField: 'size_id', labelField: 'size_name', required: false);
@@ -100,7 +121,7 @@ try{
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
-                <textarea class="form-control" name="description" rows="5" required></textarea>
+                <textarea class="form-control custom-border" name="description" rows="5" required></textarea>
             </div>  
 
             <div class="mb-3">
