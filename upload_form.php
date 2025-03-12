@@ -35,7 +35,7 @@ try{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Items</title>
-    <link rel="stylesheet" href="CSS/Uploa_items.css">
+    <link rel="stylesheet" href="CSS/Upload_items.css">
     <link rel="stylesheet" href="CSS/bootstrap.css">
     <script src="bootstrap.bundle.js"></script>
 </head>
@@ -49,7 +49,6 @@ try{
             </div>
         </nav>
 </header>
-
 
     <header class="bg-purple text-white text-center py-3">
         <h2>Upload Items</h2>
