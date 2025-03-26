@@ -1,33 +1,34 @@
 <?php
-require_once "connect.php";
+require_once "../connect.php";
+session_start();
 
 //check to see if a form was submitted
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
     //obtain the username and password from the form
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
     //create a sql command to retreive the data
-$sql = "SELECT email,username,password_hash FROM users WHERE email = ?";
+$sql = "SELECT user_id,username,email,password_hash FROM users WHERE email = :email";
 
-$stmt = mysqli_prepare($conn,$sql);
-mysqli_stmt_bind_param($stmt, "s", $email);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+$stmt = $conn ->prepare($sql);
+$stmt->execute(['email' => $email]);
+
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //check if any data was obtained
-if (mysqli_num_rows($result) > 0) {
-
-    //a username matches
-    $row = mysqli_fetch_assoc($result);
+if (($result) > 0) {
 
     //check if password is also correct
-    if (password_verify($password, $row["password_hash"])) {
+    if (password_verify($password, $result["password_hash"])) {
+
+        //set session variables
+        $_SESSION['user_name'] = $result['username'];
+        $_SESSION['user_email'] = $result['email'];
+        $_SESSION['user_id'] = $result['user_id'];
 
         //display information
-        echo "Username:".$row["username"]."<br>";
-        echo "Email:".$row["email"]."<br>";
-        echo "Password:".$row["password_hash"]."<br>";
+        echo "<script type='text/javascript'>alert('Login Successful!');</script>";
     }
     else {
         //password did not match
@@ -38,9 +39,5 @@ else {
     //username did not match
     echo "Invalid username.";
 }
-
-//close statement and connection
-mysqli_stmt_close($stmt);
-mysqli_close($conn);
 }
 ?>
