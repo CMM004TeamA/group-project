@@ -1,28 +1,69 @@
 <?php
-require_once "connect.php";
+require_once "../connect.php";
+
+//when i submit my form
+if (isset($_POST["submit"])) {
+    $user_name = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $repeat_password = $_POST["repeat_password"];
+    $role = $_POST["role"];
+
+    $password_hidden = password_hash($password, PASSWORD_DEFAULT);
+
+    $error_message = array();
+
+    if (empty($user_name) or empty($email) or empty($password) or empty($repeat_password)) {
+        array_push($error_message, "All fields must be filled!");
+    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        array_push($error_message, "Email is not valid.");
+    }
+    if (strlen($password) < 8) {
+        array_push($error_message, "Password must not be less than 8 characters");
+    }
+    if ($password <> $repeat_password) {
+        array_push($error_message, "Password is not identical");
+    }
+
+    if (count($error_message) > 0) {
+        foreach ($error_message as $error) {
+            echo $error;
+        }
+    } else {
+        require_once("registration.php");
+    }
+}
 
 
 //database check for email
-$stmt = $conn ->prepare("SELECT email FROM users WHERE email = ?");
-$stmt ->bind_param("s", $email);
-$stmt ->execute();
-$stmt->store_result();
+$stmt = $conn ->prepare("SELECT email FROM users WHERE email = :email");
+$stmt->execute(['email' => $email]);
 
-if ($stmt->num_rows>0){
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($result){
 echo "This user is already registered";
-$stmt->close();
 }
 else {
-$sql = $conn->prepare("INSERT INTO users (username, email, password_hash,role)
-                VALUES (?, ?, ?, ?)");
-$sql->bind_param("ssss", $user_name, $email, $password_hidden, $role);
-if ($sql->execute() === TRUE) {
-    echo "New record created successfully";
+    try{
+        $sql = $conn->prepare("INSERT INTO users (username, email, password_hash, role) 
+                               VALUES (:username, :email, :password_hash, :role)");
+
+$sql->bindParam(':username', $user_name);
+$sql->bindParam(':email', $email);
+$sql->bindParam(':password_hash', $password_hidden);
+$sql->bindParam(':role', $role);
+if ($sql->execute()) {
+    echo "<script type='text/javascript'>alert('New record created successfully!');</script>";
 } else {
-    echo "Error: " . $sql->error . "<br>" . $conn->error;
+    echo "Error: could not insert the record";
 }
-$sql->close();
-header('Location: ../HTML/index_page.php');
+    } catch (PDOException $e) {
+        // Handle any errors with a custom message
+        echo "Error: " . $e->getMessage();
+    }
+echo "<script type='text/javascript'>window.location.href = 'http://localhost/WEBSITES/DONATION%20WEBSITE/group-project-main/group-project-main/signup/login_form.html';</script>";
 exit;
 }
 ?>
