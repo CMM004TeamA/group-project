@@ -29,6 +29,8 @@ if (($result) > 0) {
 
         //display information
         echo "<script type='text/javascript'>alert('Login Successful!');</script>";
+
+        echo "<script type='text/javascript'>window.location.href = 'http://localhost/WEBSITES/DONATION%20WEBSITE/group-project-main/group-project-main/profile.php';</script>";
     }
     else {
         //password did not match
