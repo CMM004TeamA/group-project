@@ -7,8 +7,9 @@
     <title>Reservation Page - Team A</title>
     <link rel="stylesheet" href="bootstrap.css"> <!-- Change before submitting -->
     <link rel="stylesheet" href="style.css"> <!-- Change before submitting -->
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="User Reservation Search.js"></script>
+    <script src="Status Filter.js"></script>
 </head>
 <body>
 
@@ -27,10 +28,24 @@
             <br><br>
             <h2>Customer Reservation Log</h2><br>
             <section>
-                <input id="keyword" size="40">
-                <button id="searchButton">Search</button>
+                <input type="text" id="keyword" placeholder="Search User..." size="40" >
+                <button id="searchButton">Search</button><br><br>
+                Filter by Item Status: <select id="statusFilter">
+                    <option value="">All Statuses</option>
+                    <option value="collected">Collected</option>
+                    <option value="expired">Expired</option>
+                    <option value="reserved">Reserved</option>
+                </select>
+                <table id="result_display" class="table" style="margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th>Reservation ID</th><th>User with Reservation</th><th>Reserved Item</th><th>Date of Reservation</th><th>Item Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </section>
-            <div id="result_display"></div>
     </main>
 </body>
 </html>

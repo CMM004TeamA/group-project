@@ -2,45 +2,41 @@
             include("connect.php");
             if ($_SERVER["REQUEST_METHOD"]=="GET")
     try	{
-        $dataSourceName="mysql:host=$dbHost;dbname=$dbDatabase;";		//compose data source name as a string
-        $pdo=new PDO($dataSourceName,$dbUser,$dbPassword);	        	//create PDO object
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);	//tell PDO to report errors by exceptions
+        $dataSourceName="mysql:host=$dbHost;dbname=$dbDatabase;";	
+        $pdo=new PDO($dataSourceName,$dbUser,$dbPassword);	        	
+        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);	
     
-        $sql = "SELECT r.reservation_id, u.username, i.title, r.reservation_date 
+        $sql = "SELECT r.reservation_id, u.username, i.title, r.reservation_date, s.status_name 
                 FROM reservations r 
                 INNER JOIN users u 
                 ON r.user_id = u.user_id 
                 INNER JOIN items i 
-                ON r.item_id = i.item_id";
+                ON r.item_id = i.item_id
+                INNER JOIN statuses s
+                ON i.status_id = s.status_id";
         
 
-        $keyword=$_GET["keyword"];      //look for keyword parameter in GET request
-        if (isSet($keyword))
-            $sql=$sql." where u.username like '%".$keyword."%'"; //append filter to SQL query
+        $keyword = isset($_GET["keyword"]) ? trim($_GET["keyword"]) : "";
+        if (!empty($keyword)) {
+            $sql .= " WHERE u.username LIKE :keyword";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['keyword' => '%' . $keyword . '%']);
+        } else {
+            $stmt = $pdo->query($sql);
+        }
 
-        $result=$pdo->query($sql);	//execute SQL query
-        header("Content-type: application/json");  //set content-type to JSON
-        http_response_code(200);        //OK for retrieval
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        header("Content-type: application/json");
+        http_response_code(200);
+        echo json_encode($result);
 
-        foreach ($result as $row)       //iterate through rows in result
-            {
-                $toReturn[]=$row;       //append to PHP array
-            }
-        echo json_encode($toReturn);      //return array as JSON-formatted string
+        $pdo = null;
+    } catch (PDOException $exception) {
+        http_response_code(500);
+        echo json_encode(["error" => $exception->getMessage()]);
+    } else {
+    http_response_code(400);
+    echo json_encode(["error" => "Only GET requests are supported."]);
+}
 
-        $pdo=null;	//Destroy PDO object by removing all references to it
-                    //This will close the connection to MySQL.
-        } catch (PDOException $exception)
-        {
-            /*
-                In case of any exception, use PDOException::getMessage()
-                to get the error as a string and output it to the web page.
-            */
-            http_response_code(500);
-            echo "<div class='error'>".$exception->getMessage()."</div>";
-        } //end then part for GET method
-else    {
-        http_response_code(400);    //does not support other methods
-        } //end else
 ?>
-
