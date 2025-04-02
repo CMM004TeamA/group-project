@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     $password = $_POST['password'];
 
     //create a sql command to retreive the data
-$sql = "SELECT user_id,username,email,password_hash FROM users WHERE email = :email";
+$sql = "SELECT user_id,username,email,password_hash,role FROM users WHERE email = :email";
 
 $stmt = $conn ->prepare($sql);
 $stmt->execute(['email' => $email]);
@@ -30,16 +30,23 @@ if (($result) > 0) {
         //display information
         echo "<script type='text/javascript'>alert('Login Successful!');</script>";
 
-        echo "<script type='text/javascript'>window.location.href = 'http://localhost/WEBSITES/DONATION%20WEBSITE/group-project-main/group-project-main/profile.php';</script>";
+        if ($result['role'] == "user") {
+            echo "<script>window.location.href = '../profile.php';</script>";
+            exit();
+        }
+        elseif ($result['role'] == "admin") {
+            echo "<script>window.location.href = 'admin_view_items.php';</script>";
+            exit();
+        }
     }
     else {
         //password did not match
-        echo "Incorrect Password.";
+        echo "<script type='text/javascript'>alert('Incorrect password.');</script>";
     }
 }
 else {
     //username did not match
-    echo "Invalid username.";
+    echo "<script type='text/javascript'>alert('Invalid email address.');</script>";
 }
 }
 ?>
