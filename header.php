@@ -1,31 +1,34 @@
 <?php
 // Database connection
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 require_once "connect.php";
 ?>
 <header class="mb-5 sticky-top">
-        <nav class="navbar bg-light shadow-sm ">
+        <nav class="container d-flex flex-nowrap navbar bg-light shadow-sm ">
             <div class="container">
                 <a href="index.php" class="navbar-brand fw-bold text-purple fs-3">Team A</a>
                 <form class="d-flex mx-auto w-50" id="searchForm" role="search">
                     <input id="searchInput" class="form-control" type="search" name="searchTerm" placeholder="Search for items..">
                     <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </form>
-
-                
-
                 <div>
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        <!--- Display these if user is logged in --->
-                    <!-- <a href="cart.php" class="btn btn-outline-purple">Cart <span id="cart-counter">0</span></a> -->
-                    <a href="View_Reservations.html" class="btn btn-purple">Search reservations</a>
-                    <a href="profile.php" class="btn btn-purple">Profile</a>
-                    <a href="logout.php" class="btn btn-outline-secondary">Log Out</a>
+                        <!--- Display these if user is logged in based on role --->
+                        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'user'): ?>
+                            <a href="cart.php" class="btn btn-outline-purple text-nowrap">Cart <span id="cart-counter">0</span></a>
+                            <a href="profile.php" class="btn btn-purple text-nowrap">Profile</a>
+                        <?php endif; ?>
+                        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                            <a href="View_Reservations.html" class="btn btn-purple text-nowrap">Search reservations</a>
+                            <a href="profile_admin.php" class="btn btn-purple text-nowrap">Profile</a>
+                        <?php endif; ?>
+                    
+                    <a href="logout.php" class="btn btn-outline-secondary text-nowrap">Log Out</a>
                     <?php else: ?>
                     <!--- Display these if user is not logged in --->
-                    <button class="btn btn-outline-purple" onclick="window.location.href='login_form.html'">Log
+                    <button class="btn btn-outline-purple text-nowrap" onclick="window.location.href='login_form.html'">Log
                         In</button>
-                    <button class="btn btn-purple" onclick="window.location.href='signup.html'">Sign Up</button>
+                    <button class="btn btn-purple text-nowrap" onclick="window.location.href='signup.html'">Sign Up</button>
                     <?php endif; ?>
                 </div>
             </div>

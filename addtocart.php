@@ -1,9 +1,8 @@
 <?php
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1); // Display errors
-
+header('Content-Type: application/json');
 session_start();
-
 
 // Database connection
 
@@ -37,7 +36,7 @@ $user_id = $_SESSION['user_id'];
 
 // Validate the item ID
 if ($item_id <= 0) {
-    $response['message'] = "Invalid item ID.";
+    $response['message'] = "Item not available.";
     echo json_encode($response);
     exit();
 }

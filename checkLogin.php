@@ -17,7 +17,7 @@ $stmt->execute(['email' => $email]);
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //check if any data was obtained
-if (($result) > 0) {
+if ($result !== false) {
 
     //check if password is also correct
     if (password_verify($password, $result["password_hash"])) {
@@ -26,6 +26,8 @@ if (($result) > 0) {
         $_SESSION['user_name'] = $result['username'];
         $_SESSION['user_email'] = $result['email'];
         $_SESSION['user_id'] = $result['user_id'];
+        $_SESSION['role'] = $result['role'];
+
 
         //display information
         echo "<script type='text/javascript'>alert('Login Successful!');</script>";

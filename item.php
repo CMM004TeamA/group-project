@@ -12,17 +12,17 @@ if (isset($_SESSION['user_id'])) {
 error_reporting(E_ALL);
 require_once "connect.php";
 
-//get the item id
-$item_id = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
+// Get item ID securely
+$item_id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+if (!$item_id || $item_id <= 0) {
+    die("Invalid item ID");
+}
 
-//fetch select item
-$sql = "SELECT Items.*, Sizes.size_name, Conditions.condition_name, Statuses.status_name, Users.username
-        FROM Items
-        LEFT JOIN Sizes ON Items.size_id = Sizes.size_id
-        LEFT JOIN Conditions ON Items.condition_id = Conditions.condition_id
-        LEFT JOIN Statuses ON Items.status_id = Statuses.status_id
-        LEFT JOIN Users ON Items.user_id = Users.user_id
-        WHERE Items.item_id = ?";
+// Fetch item
+$sql = "SELECT Items.*, Sizes.size_name, Conditions.condition_name, Statuses.status_name, Users.username,
+            (SELECT image_path FROM ItemImages WHERE item_id = Items.item_id LIMIT 1) AS image_path
+        FROM Items LEFT JOIN Sizes ON Items.size_id = Sizes.size_id LEFT JOIN Conditions ON Items.condition_id = Conditions.condition_id
+        LEFT JOIN Statuses ON Items.status_id = Statuses.status_id LEFT JOIN Users ON Items.user_id = Users.user_id WHERE Items.item_id = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute([$item_id]);
@@ -31,12 +31,9 @@ $item = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$item) {
     die("Item not found.");
 }
-//get item's image(s)
-$sql = "SELECT image_path FROM ItemImages WHERE item_id=?";
-$stmt = $conn->prepare($sql);
-$stmt->execute([$item['item_id']]);
-$image = $stmt->fetch(PDO::FETCH_ASSOC);
-$item['image_path'] = $image ? $image['image_path'] : null;
+
+// Handle empty image
+$item['image_path'] = $item['image_path'] ?? null;
 
 // fetch select child category
 $sql = "SELECT * FROM Categories WHERE category_id=?";
@@ -103,10 +100,6 @@ if (!$path) {
 
         </div>
     </main>
-    <footer class="mt-5">
-        <p class="text-center fw-bold">(c) 2025 CMM004 Team A  ||  Support Contact Email: 
-            <a href="mailto:teamacmm004@gmail.com" class="text-decoration-none text-purple">teamacmm004@gmail.com</a> </p>
-    </footer>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/nav-dropdown.js"></script>
     <script>
