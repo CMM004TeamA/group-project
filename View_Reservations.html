@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation Page - Team A</title>
-    <link rel="stylesheet" href="bootstrap.css"> <!-- Change before submitting -->
-    <link rel="stylesheet" href="style.css"> <!-- Change before submitting -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css"> <!-- Change before submitting -->
+    <link rel="stylesheet" href="assets/css/style.css"> <!-- Change before submitting -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="User Reservation Search.js"></script>
     <script src="Status Filter.js"></script>
@@ -16,15 +16,15 @@
     <header class="mb-5">
         <nav class="navbar bg-light shadow-sm ">
             <div class="container">
-                <a href="homepage.html" class="navbar-brand fw-bold text-purple fs-3">Team A</a>
+                <a href="index.php" class="navbar-brand fw-bold text-purple fs-3">Team A</a>
                 <div>
-                    <button class="btn btn-purple">Log Out</button>
+                    <a href="logout.php" class="btn btn-purple">Log Out</a>
                 </div>
             </div>
         </nav>
     </header>
     <main class="container">
-            <button class="btn btn-outline-purple">Return to Admin Dashboard</button>
+            <a href="admin_view_items.php" class="btn btn-outline-purple">Return to Admin Dashboard</a>
             <br><br>
             <h2>Customer Reservation Log</h2><br>
             <section>
@@ -35,6 +35,8 @@
                     <option value="collected">Collected</option>
                     <option value="expired">Expired</option>
                     <option value="reserved">Reserved</option>
+                    <option value="In Cart">In Cart</option>
+
                 </select>
                 <table id="result_display" class="table" style="margin-top: 15px;">
                     <thead>
@@ -48,4 +50,9 @@
             </section>
     </main>
 </body>
+<!-- Footer -->
+<footer class="bg-secondary text-center fw-bold py-3">
+    <p>&copy; 2025 CMM004 Team A. All rights reserved ||  Support Contact Email: 
+    <a href="mailto:teamacmm004@gmail.com" class="text-decoration-none text-purple">teamacmm004@gmail.com</a> </p>
+  </footer>
 </html>

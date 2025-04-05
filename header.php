@@ -17,12 +17,13 @@ require_once "connect.php";
                 <div>
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <!--- Display these if user is logged in --->
-                    <a href="cart.php" class="btn btn-outline-purple">Cart <span id="cart-counter">0</span></a>
-                    <a href="#" class="btn btn-purple">Profile</a>
-                    <a href="#" class="btn btn-outline-secondary">Log Out</a>
+                    <!-- <a href="cart.php" class="btn btn-outline-purple">Cart <span id="cart-counter">0</span></a> -->
+                    <a href="View_Reservations.html" class="btn btn-purple">Search reservations</a>
+                    <a href="profile.php" class="btn btn-purple">Profile</a>
+                    <a href="logout.php" class="btn btn-outline-secondary">Log Out</a>
                     <?php else: ?>
                     <!--- Display these if user is not logged in --->
-                    <button class="btn btn-outline-purple" onclick="window.location.href='loginForm.html'">Log
+                    <button class="btn btn-outline-purple" onclick="window.location.href='login_form.html'">Log
                         In</button>
                     <button class="btn btn-purple" onclick="window.location.href='signup.html'">Sign Up</button>
                     <?php endif; ?>
@@ -76,7 +77,7 @@ require_once "connect.php";
                     }
                     ?>
                     <li class="nav-item me-3">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
                 </ul>
             </div>

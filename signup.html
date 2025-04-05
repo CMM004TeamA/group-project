@@ -1,67 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-<title>Register User</title>
-<link rel = "stylesheet" href = "assets/css/bootstrap.css">
-<meta charset = "utf-8">
-<meta name = "viewport" content = "width=device-width, initial-scale">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register User</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/aya_style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
+</head>
 
 <body>
-</head>
-<body> 
-    <header>
-<!--Navigation Bar-->
-<nav class = "navbar">
-<button id="homeBtn">Home</button>
-<button id="cartBtn">Cart</button>
-<button id="supportBtn">Support</button>
-<button id="logoutBtn">Logout</button>
-</nav>
-</header>
+      <!-- Centered Form -->
+    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+        <div class="form-container text-center">
+            <h3 class="mb-4"><a href="index.php" class="navbar-brand fw-bold text-purple fs-3">Team A</a></h3>
 
+            <form id="cvform" action="registration.php" method="POST">
+                
+                <div class="mb-3">
+                    <label for="username" class="form-label">User Name:</label>
+                    <input type="text" name="username" placeholder="User Name" class="form-control" maxlength="50" required>
+                </div>
 
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
-    <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" name="email" placeholder="Email" class="form-control" maxlength="50" required>
+                </div>
 
-    <h3 class="text-center mb-4">Sign Up</h3>
-   
-        <form id = "cvform" style="width:50%;margin:0 auto;" action = "#" method = "post">
-            <div class = "mb-3">
-            <label for = "name">Full Name:</label><br>
-            <input type = "text" name = "full_name" placeholder = "Full Name" class = "form-control" maxlength="50" required = ""><br>
-            </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" name="password" placeholder="Password" class="form-control" maxlength="50" required>
+                </div>
 
-            <div class = "mb-3">
-            <label for = "email">Email:</label><br>
-            <input type = "email" name = "email" placeholder = "Email" class = "form-control" maxlength="50" required = ""><br>
-            </div>
+                <div class="mb-3">
+                    <label for="repeat_password" class="form-label">Repeat Password:</label>
+                    <input type="password" name="repeat_password" placeholder="Repeat Password" class="form-control" maxlength="50" required>
+                </div>
 
-            <div class = "mb-3">
-            <label for = "password">Password:</label><br>
-            <input type = "password" name = "password" placeholder = "Password" class = "form-control" maxlength="50" required = ""><br>
-            </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Role:</label>
+                    <select id="role" name="role" class="form-select">
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
 
-            <div class = "mb-3">
-            <label for = "repeat_password">Repeat Password:</label><br>
-            <input type = "password" name = "repeat_password" placeholder = "Password" class = "form-control" maxlength="50" required = ""><br>
-            </div>
+                <button type="submit" name="submit" class="btn btn-purple">Sign Up</button>
+            </form>
 
-            <div class = "d-grid">
-            <input type = "submit" value = "Sign Up">
+            <p class="mt-3">Already a User? <a href="login_form.html">Login</a></p>
         </div>
-
-</form>
-
-
-<p class="text-center">Already a User? <a href = "login page CMM004.html">&nbsp Login</a></p>
-
-</div>
-</div>
-
+    </div>
 
 </body>
-
 </html>

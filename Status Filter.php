@@ -3,10 +3,6 @@ include("connect.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
-        $dataSourceName = "mysql:host=$dbHost;dbname=$dbDatabase;";
-        $pdo = new PDO($dataSourceName, $dbUser, $dbPassword);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         $sql = "SELECT r.reservation_id, u.username, i.title, r.reservation_date, s.status_name 
                 FROM reservations r 
                 INNER JOIN users u ON r.user_id = u.user_id 
@@ -17,10 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         if (!empty($statusFilter)) {
             $sql .= " WHERE s.status_name = :statusFilter";
-            $stmt = $pdo->prepare($sql);
+            $stmt = $conn->prepare($sql);
             $stmt->execute(["statusFilter" => $statusFilter]);
         } else {
-            $stmt = $pdo->query($sql);
+            $stmt = $conn->query($sql);
         }
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -29,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         http_response_code(200);
         echo json_encode($result);
 
-        $pdo = null;
+        $conn = null;
     } catch (PDOException $exception) {
         http_response_code(500);
         echo json_encode(["error" => $exception->getMessage()]);

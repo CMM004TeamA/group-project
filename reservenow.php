@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 
 session_start();
 
@@ -16,11 +16,11 @@ require_once "connect.php";
 
 // Get user id
 $user_id = $_SESSION["user_id"];
-echo "User ID: " . $user_id . "<br>"; // Debugging
+//echo "User ID: " . $user_id . "<br>"; // Debugging
 
 // Get item id
 $item_id = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
-echo "Item ID: " . $item_id . "<br>"; // Debugging
+//echo "Item ID: " . $item_id . "<br>"; // Debugging
 
 // Fetch selected item
 $sql = "SELECT*FROM Items WHERE item_id = ?";
@@ -33,10 +33,10 @@ if (!$item) {
 }
 
 // Check if item is already reserved
-echo "Item Status ID: " . $item['status_id'] . "<br>"; // Debugging
+//echo "Item Status ID: " . $item['status_id'] . "<br>"; // Debugging
 
-echo "Item Data: ";
-print_r($item); // Debugging
+//echo "Item Data: ";
+//print_r($item); // Debugging
 
 if ($item['status_id'] != 1) {
     die("This item is not available. Status ID: " . $item['status_id']); // Debugging
@@ -44,7 +44,7 @@ if ($item['status_id'] != 1) {
 
 // Update the item in the database to reserved status
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo "POST request received.<br>"; // Debugging
+    //echo "POST request received.<br>"; // Debugging
 
     try {
         // Begin transaction
@@ -67,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: reservationconfirmation.php");
         exit();
     } catch (Exception $e) {
-        // Rollback transaction on error
         $conn->rollBack();
         die("An error occurred: " . $e->getMessage());
     }

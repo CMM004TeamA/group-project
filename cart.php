@@ -11,22 +11,12 @@ if (!isset($_SESSION["user_id"])) {
 require_once "connect.php";
 
 try {
-    // Fetch cart items for the user
-    $sql = "SELECT Items.* FROM CartItems 
-            JOIN Items ON CartItems.item_id = Items.item_id 
-            WHERE CartItems.user_id = ?";
+    // Fetch cart items with their images
+    $sql = "SELECT Items.*, (SELECT image_path FROM ItemImages WHERE ItemImages.item_id = Items.item_id LIMIT 1) AS image_path 
+    FROM CartItems JOIN Items ON CartItems.item_id = Items.item_id WHERE CartItems.user_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$_SESSION['user_id']]);
     $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Fetch images for each item
-    foreach ($cartItems as &$item) {
-        $sql = "SELECT image_path FROM ItemImages WHERE item_id = ? LIMIT 1";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$item['item_id']]);
-        $image = $stmt->fetch(PDO::FETCH_ASSOC);
-        $item['image_path'] = $image['image_path'];
-    }
 } catch (PDOException $e) {
     die("Database error: " . $e->getMessage());
 }
@@ -67,8 +57,10 @@ try {
         <?php endif; ?>
         <button id="reserveAll" class="btn btn-purple mt-5">Reserve All</button>
     </main>
-    <footer class="mt-5">
-        <p class="text-center fw-bold">(c) 2025 CMM004 Team A  ||  Support Contact Email: teamacmm004@gmail.com </p>
+    <footer class="bg-secondary text-center fw-bold py-3">
+        <p>&copy; 2025 CMM004 Team A. All rights reserved || Support Contact Email:
+            <a href="mailto:teamacmm004@gmail.com" class="text-decoration-none text-purple">teamacmm004@gmail.com</a>
+        </p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/cartAJAX.js"></script>

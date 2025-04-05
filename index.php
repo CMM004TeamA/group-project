@@ -9,29 +9,15 @@ if (isset($_SESSION['user_id'])) {
 }
 
 // Database connection
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 require_once "connect.php";
 
-//fetch the first twenty recently added items
-$sql = "SELECT DISTINCT * FROM Items WHERE status_id=1 ORDER BY date_added DESC LIMIT 20";
+// Fetch the first twenty items
+$sql = "SELECT Items.*, ItemImages.image_path FROM Items LEFT JOIN ItemImages ON Items.item_id = ItemImages.item_id WHERE status_id=1 
+        GROUP BY Items.item_id ORDER BY date_added DESC LIMIT 20";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $recent_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-//fetch their images
-foreach ($recent_items as &$item) {
-    $sql = "SELECT image_path FROM ItemImages WHERE item_id = ? LIMIT 1";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$item["item_id"]]);
-    $image = $stmt->fetch(PDO::FETCH_ASSOC);
-    $item['image_path'] = $image['image_path']; // Add image_path to the item
-}
-//ensure items are not repeated
-$uniqueItems = [];
-foreach ($recent_items as $item) {
-    $uniqueItems[$item['item_id']] = $item;
-}
-$recent_items = array_values($uniqueItems);
 ?>
 
 <!DOCTYPE html>
@@ -86,8 +72,11 @@ $recent_items = array_values($uniqueItems);
         </div>
     </main>
 
-    <footer class="mt-5">
-        <p class="text-center fw-bold">(c) 2025 CMM004 Team A  ||  Support Contact Email: teamacmm004@gmail.com </p>
+    <!-- Footer -->
+    <footer class="bg-secondary text-center fw-bold py-3">
+        <p>&copy; 2025 CMM004 Team A. All rights reserved || Support Contact Email:
+            <a href="mailto:teamacmm004@gmail.com" class="text-decoration-none text-purple">teamacmm004@gmail.com</a>
+        </p>
     </footer>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/nav-dropdown.js"></script>

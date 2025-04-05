@@ -4,7 +4,7 @@ require_once "connect.php";
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: loginForm.html");
+    header("Location: login_form.html");
     exit;
 }
 
@@ -70,7 +70,7 @@ unset($_SESSION['success']);
 <header class="mb-5 sticky-top">
         <nav class="navbar bg-light shadow-sm ">
             <div class="container">
-                <a href="homepage.php" class="navbar-brand fw-bold text-purple fs-3">Team A</a>      
+                <a href="index.php" class="navbar-brand fw-bold text-purple fs-3">Team A</a>      
             </div>
         </nav>
     </header>   

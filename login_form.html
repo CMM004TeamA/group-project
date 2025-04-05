@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register User</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/aya_style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+        <div class="form-container text-center">
+            <h3 class="mb-4"><a href="index.php" class="navbar-brand fw-bold text-purple fs-3">Team A</a></h3>
+                <form id="cvform" action="checkLogin.php" method="POST">
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="text" name="email" placeholder="Email" class="form-control" maxlength="50" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" name="password" placeholder="Password" class="form-control" maxlength="50" required>
+                </div>
+                
+                <button type="submit" name="submit" class="btn btn-purple">Log In</button>
+            </form>
+
+<p class="mt-3">New User? <a href = "signup.html">&nbsp Register</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
+

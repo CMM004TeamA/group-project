@@ -4,7 +4,7 @@ include "connect.php";
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: loginForm.html"); 
+    header("Location: login_form.html"); 
     exit();
 }
 
