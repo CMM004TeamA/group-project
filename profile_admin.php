@@ -80,13 +80,22 @@ require 'connect.php';
                                 </div>
                             </div>                          
                             <hr>
-                            <div class="row">
-                                <a href="edit_profile_admin.php" class="col-sm-12">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProfileModal">
-                                        <i class="fas fa-edit"></i> Edit Profile
-                                    </button>
-                                </a>
-                            </div>
+                            <div class="row justify-content-between">
+    <div class="col-auto">
+        <a href="edit_profile_admin.php">
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Edit Profile
+            </button>
+        </a>
+    </div>
+    <div class="col-auto">
+        <a href="password_form.php">
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Change Password
+            </button>
+        </a>
+    </div>
+</div>
                         </div>
                     </div>
                 </div>
