@@ -24,13 +24,7 @@ if (empty($email)) {
 if ($email == $_SESSION['user_email']) {
     $check_email = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
     $check_email->execute([$email]);
-    if ($check_email->fetch()) {
-        echo "<script>alert('Email already registered!'); window.location.href='javascript:history.go(-1)';</script>";
-        exit();
-    }
-}
-
-else {
+    
 try {
     $update_stmt = $conn->prepare("UPDATE users SET username = ?, email = ? WHERE email = ?");
     $update_stmt->execute([$username, $email, $user_email]);
