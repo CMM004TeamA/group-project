@@ -31,10 +31,6 @@ if (isset($_POST["submit"])) {
             echo $error;
         }
     } else {
-        require_once("registration.php");
-    }
-}
-
 
 //database check for email
 $stmt = $conn ->prepare("SELECT email FROM users WHERE email = :email");
@@ -65,5 +61,7 @@ if ($sql->execute()) {
     }
 echo "<script type='text/javascript'>window.location.href = 'login_form.html';</script>";
 exit;
+}
+}
 }
 ?>
