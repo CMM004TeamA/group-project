@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e3f2fd;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+            width: 500px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+           font-size: 24px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+     label {
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+       
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #edit-btn {
+            background: #ffc107;
+            color: #fff;
+            
+        }
+        #save-btn {
+            background: #28a745;
+            color: #fff;
+        }
+        #cancel-btn {
+            background: #dc3545;
+            color: #fff;
+            display: none;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        </style>
+</head>
+<body>
+    
+        <div class="container">
+            <h1>Edit Profile</h1>
+            <form>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+
+           <div class="form-group">
+            <button type="button" id="edit-btn">Edit Profile</button>
+            <button type="submit" id="save-btn" style="display:none;"> Save Changes</button> 
+            <button type="button" id="cancel-btn">Cancel</button>
+    </form>
+   
+            </div>
+</div>
+<script src="script.js"></script>
+ </body>
+ </html>
