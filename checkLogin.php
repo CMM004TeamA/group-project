@@ -44,11 +44,13 @@ if ($result !== false) {
     else {
         //password did not match
         echo "<script type='text/javascript'>alert('Incorrect password.');</script>";
+        echo "<script>window.location.href = 'login_form.html';</script>";
     }
 }
 else {
     //username did not match
     echo "<script type='text/javascript'>alert('Invalid email address.');</script>";
+    echo "<script>window.location.href = 'login_form.html';</script>";
 }
 }
 ?>
