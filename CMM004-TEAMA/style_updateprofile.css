@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #e3f2fd;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.profile-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    width: 500px;
+}
+h3, h6 {
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.cart-items {
+    margin-top: 20px;
+}
+.cart-items h2 {
+    color: #007bff;
+}
+.cart-items ul {
+    list-style: none;
+    padding: 0;
+}
+.cart-items li {
+    background: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 48%;
+}
+#edit-btn {
+    background: #ffc107;
+    color: #fff;
+    
+}
+#save-btn {
+    background: #28a745;
+    color: #fff;
+}
+#cancel-btn {
+    background: #dc3545;
+    color: #fff;
+    display: none;
+}
+button:hover {
+    opacity: 0.9;
+}
